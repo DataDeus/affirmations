@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affirmation for Your Girlfriend</title>
+    <style>
+        /* Your existing CSS styles here */
+
+        /* Additional styles for animation */
+        input[type="text"] {
+            font-size: 18px; /* Adjust the font size as needed */
+            padding: 5px;   /* Adjust the padding as needed */
+            width: 300px;    /* Set a specific width if necessary */
+            justify-content: center;
+            align-items: center;
+            }
+        
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        security-answer {
+            font-size: 18px;
+            padding: 10px;
+            width: 300px;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        input {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Your existing CSS styles here */
+
+        /* Additional styles for animation */
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            background: linear-gradient(to right, #DCD0FF, #B666D2);
+        }
+
+        #security-submit {
+            /* border-radius: 90%; */
+            padding: 15px 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Affirmations for My Tosin</h1> 
+
+
+    <div id="affirmation-container" class="hidden">
+        <p id="affirmation-text">Click the button to get an affirmation!</p>
+    </div>
+
+    <div id="security-container">
+        <label for="security-question">If the World was ending, what would you and El do?</label> <br> <br>
+        <input type="text" id="security-answer" placeholder="Type the answer"> <br>
+        <button id="security-submit">I confirm that I am Tosin</button>
+    </div> <br>
+
+    <button id="get-affirmation" class="hidden">Get Affirmation</button>
+
+    <script>
+        const affirmations = [
+            "You are loved beyond measure.",
+            "Your smile brightens up my darkest days.",
+            "With you, every moment is special.",
+            // Add more affirmations here
+            "Remember, you are amazing just the way you are."
+        ];
+
+        const affirmationContainer = document.getElementById('affirmation-container');
+        const securityContainer = document.getElementById('security-container');
+        const securitySubmitBtn = document.getElementById('security-submit');
+        const getAffirmationBtn = document.getElementById('get-affirmation');
+
+        let securityQuestionAnswer = "lol"; // Set your girlfriend's favorite color as the answer
+        let hasAnsweredSecurityQuestion = false;
+
+        getAffirmationBtn.addEventListener('click', function () {
+            if (!hasAnsweredSecurityQuestion) {
+                showSecurityQuestion();
+            } else {
+                displayRandomAffirmation();
+            }
+        });
+
+        securitySubmitBtn.addEventListener('click', checkSecurityAnswer);
+
+        function showSecurityQuestion() {
+            securityContainer.style.display = 'block';
+        }
+
+        function checkSecurityAnswer() {
+            const userAnswer = document.getElementById('security-answer').value.toLowerCase();
+            if (userAnswer === securityQuestionAnswer) {
+                hasAnsweredSecurityQuestion = true;
+                securityContainer.style.display = 'none';
+                displayRandomAffirmation();
+            } else {
+                alert('Incorrect answer. Please try again.');
+            }
+        }
+
+        function displayRandomAffirmation() {
+            affirmationContainer.classList.remove('hidden');
+            getAffirmationBtn.classList.remove('hidden');
+            const randomIndex = Math.floor(Math.random() * affirmations.length);
+            affirmationContainer.textContent = affirmations[randomIndex];
+        }
+    </script>
+</body>
+</html>
